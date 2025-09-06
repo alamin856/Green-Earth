@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Earth</title>
+    <!-- DaisyUI And Tailwind CDN Link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Font CDN Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+<body>
+    <header class="bg-[#15803D]">
+        <div>
+            <nav class="container mx-auto flex justify-between items-center text-[#ffffff] py-6">
+                <div>
+                    <h3 class="text-[1.5rem]">Green Earth</h3>
+                </div>
+                <ul class="flex justify-center gap-5">
+                    <li><a class="font-medium" href="#">About</a></li>
+                    <li><a class="font-medium" href="#">Gallery</a></li>
+                    <li><a class="font-medium" href="#">Plant a Tree</a></li>
+                </ul>
+                <div>
+                    <button class="btn border-none bg-[#FACC15] px-5 py-3 rounded-full text-[#15803D] font-medium cursor-pointer">Plant a Tree</button>
+                </div>
+            </nav>
+        </div>
+        <div class="bg-[#CFF0DC] flex justify-between items-center">
+            <div>
+                <img src="./assets/hero-leaf1.png" alt="">
+            </div>
+            <div class="text-center">
+                <h1 class="text-[#1F2937] text-[3rem] font-bold">Plant a Tree, Grow a Future</h1>
+                <p class="text-[#1F2937] text-[16px]">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
+                <div class="mt-6">
+                    <button class="btn border-none bg-[#FACC15] px-5 py-3 rounded-full text-[#15803D] font-medium cursor-pointer">Get Involved</button>
+                </div>
+            </div>
+            <div>
+                <img src="./assets/hero-leaf2.png" alt="">
+            </div>
+        </div>
+    </header>
+    <main class="mt-[100px]">
+        <h2 class="text-center font-semibold text-[2rem]">Choose Your Trees</h2>
+    <div class="container mx-auto grid grid-cols-5 justify-between">
+        <div id="categories-container" class="col-span-1">categories</div>
+        <div id="card-container" class="grid grid-cols-3 col-span-3">
+            <div>card-1</div>
+            <div>card-2</div>
+            <div>card-3</div>
+        </div>
+        <div id="cart-container" class="col-span-1">Your Cart</div>
+    </div>
+    </main>
+    <footer></footer>
+</body>
+</html>
