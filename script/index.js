@@ -1,5 +1,6 @@
 const categoriesContainer = document.getElementById("categories-container")
 const cardContainer = document.getElementById("card-container");
+const cartContainer = document.getElementById("cart-container");
 
 // Load Categories Function
 const loadCategories = () =>{
@@ -46,14 +47,12 @@ const displayAllPlants = (allPlants) =>{
                 </div>
                 <div class="p-4">
                     <h3 class="font-semibold text-[#1F2937] text-[1.25rem] mt-3">${plant.name}</h3>
-                    <p class="my-2 text-[#1F2937] text-[14px] leading-4 text-justify">${plant.description}</p>
+                    <p class="h-[100px] text-[#1F2937] text-[14px] leading-4 text-justify">${plant.description}</p>
                     <div class="flex justify-between">
                         <span class="bg-[#DCFCE7] py-1 px-3 rounded-full font-medium">${plant.category}</span>
                         <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</span>
                     </div>
-                    <div class="mt-3 text-center bg-[#15803D] py-3 rounded-full btn w-full">
-                        <button class="text-[#ffffff] font-medium cursor-pointer">Add to Cart</button>
-                    </div>
+                    <button class="mt-3 text-center bg-[#15803D] py-3 rounded-full btn w-full btn btn-block text-[#ffffff] font-medium cursor-pointer">Add to Cart</button>
                 </div>
             </div>
         `
@@ -70,7 +69,6 @@ const loadPlants = (plantsId) =>{
 const displayPlants = (plants) =>{
     cardContainer.innerHTML = ""
     plants.forEach(plant => {
-        console.log(plant)
         cardContainer.innerHTML += `
             <div class="bg-[#ffffff] rounded-xl">
                 <div class="h-[250px]">
@@ -83,12 +81,31 @@ const displayPlants = (plants) =>{
                         <span class="bg-[#DCFCE7] py-1 px-3 rounded-full font-medium">${plant.category}</span>
                         <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</span>
                     </div>
-                    <div class="mt-3 text-center bg-[#15803D] py-3 rounded-full btn w-full">
-                        <button class="text-[#ffffff] font-medium cursor-pointer">Add to Cart</button>
-                    </div>
+                    <button class="mt-3 text-center bg-[#15803D] py-3 rounded-full btn w-full btn btn-block text-[#ffffff] font-medium cursor-pointer">Add to Cart</button>
                 </div>
             </div>
         `
     })
 }
+
+// Card Button Event Handler
+cardContainer.addEventListener("click", (event) =>{
+    const title = event.target.parentNode.children[0].innerText
+    const price = Number(event.target.parentNode.children[2].children[1].innerText)
+    let totalPrice = Number(document.getElementById("total-price").innerText);
+    console.log(totalPrice)
+    if(event.target.localName === "button"){
+        cartContainer.innerHTML += `
+            <div class="bg-[#CFF0DC] rounded-xl p-3 flex items-center justify-between my-5">
+                <div class="">
+                    <h2 class="text-[#1F2937] font-semibold mb-2">${title}</h2>
+                    <p class="text-[#1F2937]"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${price}</p>
+                </div>
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+        `
+        totalPrice = totalPrice + price
+        document.getElementById("total-price").innerText = totalPrice
+    }
+})
 
