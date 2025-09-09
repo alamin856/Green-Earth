@@ -27,38 +27,12 @@ const displayCategories = (data) =>{
             event.target.classList.add("bg-[#15803D]")
             loadPlants(event.target.id)
         }
+        if(event.target.id === "all-trees"){
+            loadAllPlants()
+        }
     })
 }
 loadCategories()
-
-// Load All Plants  Function
-const loadAllPlants = () =>{
-    fetch("https://openapi.programming-hero.com/api/plants")
-    .then(res => res.json())
-    .then(data => displayPlants(data.plants))
-}
-const displayAllPlants = (allPlants) =>{
-    allPlants.forEach(allPlant => {
-        console.log(allPlant)
-        cardContainer.innerHTML += `
-            <div class="bg-[#ffffff] rounded-xl">
-                <div class="h-[250px]">
-                    <img class="h-[100%] w-[100%] rounded-t-xl" src="${plant.image}" />
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-[#1F2937] text-[1.25rem] mt-3">${plant.name}</h3>
-                    <p class="h-[100px] text-[#1F2937] text-[14px] leading-4 text-justify">${plant.description}</p>
-                    <div class="flex justify-between">
-                        <span class="bg-[#DCFCE7] py-1 px-3 rounded-full font-medium">${plant.category}</span>
-                        <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</span>
-                    </div>
-                    <button class="mt-3 text-center bg-[#15803D] py-3 rounded-full btn w-full btn btn-block text-[#ffffff] font-medium cursor-pointer">Add to Cart</button>
-                </div>
-            </div>
-        `
-    })
-}
-loadAllPlants()
 
 // Load Plants by categores Function
 const loadPlants = (plantsId) =>{
@@ -70,13 +44,13 @@ const displayPlants = (plants) =>{
     cardContainer.innerHTML = ""
     plants.forEach(plant => {
         cardContainer.innerHTML += `
-            <div class="bg-[#ffffff] rounded-xl">
+            <div class="bg-[#ffffff] rounded-xl grid">
                 <div class="h-[250px]">
                     <img class="h-[100%] w-[100%] rounded-t-xl" src="${plant.image}" />
                 </div>
                 <div class="p-4">
-                    <h3 class="font-semibold text-[#1F2937] text-[1.25rem] mt-3">${plant.name}</h3>
-                    <p class="my-5 text-[#1F2937] text-[14px] leading-4 text-justify">${plant.description}</p>
+                    <h3 onclick="my_modal_5.showModal()" class="font-semibold text-[#1F2937] text-[1.25rem] mt-3">${plant.name}</h3>
+                    <p class="my-5 text-[#1F2937] text-[14px] leading-4">${plant.description}</p>
                     <div class="flex justify-between">
                         <span class="bg-[#DCFCE7] py-1 px-3 rounded-full font-medium">${plant.category}</span>
                         <span class="font-semibold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</span>
@@ -87,6 +61,17 @@ const displayPlants = (plants) =>{
         `
     })
 }
+
+// Load All Plants  Function
+const loadAllPlants = () =>{
+    fetch("https://openapi.programming-hero.com/api/plants")
+    .then(res => res.json())
+    .then(data => displayPlants(data.plants))
+}
+const displayAllPlants = (allPlants) =>{
+    displayPlants(allPlants)
+}
+loadAllPlants()
 
 // Card Button Event Handler
 cardContainer.addEventListener("click", (event) =>{
@@ -112,10 +97,15 @@ cardContainer.addEventListener("click", (event) =>{
 document.getElementById("cart-container").addEventListener("click", (event) =>{
     const price = Number(event.target.parentNode.children[0].children[1].innerText);
     let totalPrice = Number(event.target.parentNode.parentNode.parentNode.children[2].children[1].children[1].innerText)
-    if(totalPrice <= -0){
-        return
-    }if(event.target.localName === "button"){
+    if(event.target.localName === "button"){
         totalPrice = totalPrice - price
     }
     document.getElementById("total-price").innerText = totalPrice
+})
+
+// Modal Functionality
+cardContainer.addEventListener("click", (event) =>{
+    if(event.target.localName === "h3"){
+
+    }
 })

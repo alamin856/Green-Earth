@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Earth</title>
-    <link rel="shortcut icon" href="./assets/hero-leaf1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/green-earth-logo.png!sw800" type="image/x-icon">
     <!-- DaisyUI And Tailwind CDN Link -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -58,8 +58,8 @@
             <div class="container mx-auto grid grid-cols-1 md:grid-cols-8 justify-between gap-5 mt-6">
                 <div>
                     <h2 class="text-[#000000] font-semibold text-[1.25rem] mb-4">Categories</h2>
-                    <ul id="categories-container" class="md:col-span-1">
-                        
+                    <ul id="categories-container" class="md:col-span-1 col-span-8">
+                        <li id="all-trees" class="py-4 px-2 text-[#1F2937] bg-[#15803D] hover:bg-[#499766] hover:text-[#ffffff] rounded-md cursor-pointer btn w-full mb-2">All Trees</li>
                     </ul>
                 </div>
                 <div id="card-container" class="grid sm:grid-cols-2 md:grid-cols-3 col-span-5 gap-4">
@@ -133,6 +133,20 @@
                 </form>
             </div>
         </section>
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+            <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+            </form>
+            </div>
+        </div>
+        </dialog>
     </main>
     <footer class="bg-[#14532D] py-6">
         <p class="text-center text-[#ffffff]">© 2025 Green Earth. All Rights Reserved.</p>
