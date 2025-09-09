@@ -21,7 +21,7 @@ const displayCategories = (data) =>{
     categoriesContainer.addEventListener("click", (event) =>{
         const allLi = document.querySelectorAll("li");
         allLi.forEach(li => {
-            li.classList.remove("bg-[#15803D]")
+            li.classList.remove("bg-[#15803D]", "text-[#ffffff]")
         })
         if(event.target.localName === "li"){
             event.target.classList.add("bg-[#15803D]")
@@ -33,6 +33,7 @@ const displayCategories = (data) =>{
     })
 }
 loadCategories()
+
 
 // Load Plants by categores Function
 const loadPlants = (plantsId) =>{
@@ -69,7 +70,7 @@ const loadAllPlants = () =>{
     .then(data => displayPlants(data.plants))
 }
 const displayAllPlants = (allPlants) =>{
-    displayPlants(allPlants)
+    displayPlants(allPlants.id)
 }
 loadAllPlants()
 
@@ -103,9 +104,3 @@ document.getElementById("cart-container").addEventListener("click", (event) =>{
     document.getElementById("total-price").innerText = totalPrice
 })
 
-// Modal Functionality
-cardContainer.addEventListener("click", (event) =>{
-    if(event.target.localName === "h3"){
-
-    }
-})
